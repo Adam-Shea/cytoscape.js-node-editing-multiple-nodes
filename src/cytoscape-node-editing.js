@@ -310,11 +310,9 @@
           node.css('height', height);
         },
         setCompoundMinWidth: function(node, minWidth) {
-          console.log("width")
           node.css('min-width', minWidth);
         },
         setCompoundMinHeight: function(node, minHeight) {
-          console.log("height")
           node.css('min-height', minHeight);
         },
         setCompoundMinWidthBiasLeft: function(node, minWidthBiasLeft) {
@@ -699,7 +697,6 @@
           // instead of setWidth() and setHeight() 
           setWidthFcn = node.isParent() ? options.setCompoundMinWidth : options.setWidth;
           setHeightFcn = node.isParent() ? options.setCompoundMinHeight : options.setHeight;
-          console.log("hello team")
 
           getWidthFcn = function(node) {
             if (node.isParent()) {
@@ -764,8 +761,8 @@
           var x = currentPointer.x;
           var y = currentPointer.y;
 
-          var xHeight = (y - startPos.y) / cy.zoom();
-          var xWidth = (x - startPos.x) / cy.zoom();
+          var xHeight = Math.round(((y - startPos.y) / cy.zoom()) / 10) * 10;
+          var xWidth = Math.round(((x - startPos.x) / cy.zoom()) / 10) * 10;
 
           var location = self.location;
           cy.batch(function() {
