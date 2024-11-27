@@ -826,7 +826,7 @@
                 && (!node.isParent() || extraTop - xHeight >= 0)) {
                 newY = nodePos.y + xHeight / 2;
                 isYresized = true;
-                setHeightFcn(node, getHeightFcn(node) - xHeight);
+                setHeightFcn(node, Math.round((getHeightFcn(node) - xHeight) / 10) * 10);
               } else if (isAspectedMode)
                 return;
             } else if (location.startsWith("bottom")) {
@@ -837,7 +837,7 @@
                 && (!node.isParent() || extraBottom + xHeight >= 0)) {
                 newY = nodePos.y + xHeight / 2;
                 isYresized = true;
-                setHeightFcn(node, getHeightFcn(node) + xHeight);
+                setHeightFcn(node, Math.round((getHeightFcn(node) + xHeight) / 10) * 10);
               } else if (isAspectedMode)
                 return;
             }
@@ -849,7 +849,7 @@
               // then extraLeft should not be negative
               newX = nodePos.x + xWidth / 2;
               isXresized = true;
-              setWidthFcn(node, getWidthFcn(node) - xWidth);
+              setWidthFcn(node, Math.round((getWidthFcn(node) - xWidth) / 10 * 10));
             } else if (location.endsWith("right") && getWidthFcn(node) + xWidth > options.minWidth(node)
               && (!node.isParent() || extraRight + xWidth >= 0)) {
               // Note that xWidth is supposed to be positive
@@ -857,7 +857,7 @@
               // then extraRight should not be negative
               newX = nodePos.x + xWidth / 2;
               isXresized = true;
-              setWidthFcn(node, getWidthFcn(node) + xWidth);
+              setWidthFcn(node, Math.round((getWidthFcn(node) + xWidth) / 10) * 10);
             }
 
             // this will trigger a position event, leading to useless redraw.
